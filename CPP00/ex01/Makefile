@@ -20,7 +20,7 @@ NAME		= phonebook
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= phonebook.cpp
+SRCS		= main.cpp Contact.cpp PhoneBook.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 #==============================================================================#
@@ -32,8 +32,9 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@echo
 			@echo
-			@echo "               $(WHITE).7$(RESET)"
-			@echo "             $(WHITE).'/$(RESET)"
+			@echo "                $(WHITE).7$(RESET)"
+			@echo "              $(WHITE).'/$(RESET)"
+			@echo "             $(WHITE)/ /$(RESET)"
 			@echo "            $(WHITE)/ /$(RESET)"
 			@echo "           $(WHITE)/ /$(RESET)"
 			@echo "          $(WHITE)/ /$(RESET)"
@@ -41,21 +42,20 @@ $(NAME):	$(OBJS)
 			@echo "        $(WHITE)/ /$(RESET)"
 			@echo "       $(WHITE)/ /$(RESET)"
 			@echo "      $(WHITE)/ /$(RESET)"
-			@echo "     $(WHITE)/ /$(RESET)"
-			@echo "    $(GRAY)__|/$(RESET)"
-			@echo "  $(GRAY),-\\__\\"
-			@echo "  $(GRAY)|f-\"Y\\|$(RESET)"
-			@echo "  $(GRAY)\\()7L/$(RESET)"
-			@echo "   $(GRAY)cgD                            __ _"
-			@echo "   $(GRAY)|\\(                        .'  Y '>,"
-			@echo "    $(GRAY)\\ \\                      / $(RED)_   _$(RESET)   \\"
-			@echo "     $(GRAY)\\ \\                     )$(RED)(_) (_)$(RESET)(|}"
-			@echo "      $(GRAY)\\ \\                   {  4A   } /"
-			@echo "       $(GRAY)\\ \\                   \\uLuJJ/\\l"
-			@echo "        $(GRAY)\\ \\                  |3    p)/"
-			@echo "         $(GRAY)\\ \\ __________$(RESET)      /nnm_n//"
-			@echo "         $(GRAY)c7___-__,__-)\\,__)(\".$(RESET)  \\_>-<_/D"
-			@echo "                   $(GRAY)//V $(RESET)\\_\"-._.__G G_c__.-__<\"/ ( \\"
+			@echo "     $(WHITE)/_/$(RESET)"
+			@echo "  $(WHITE),-\\__\\"
+			@echo "  $(WHITE)|f-\"Y\\|$(RESET)"
+			@echo "  $(WHITE)\\()7L/$(RESET)"
+			@echo "   $(WHITE)cgD                            __ _"
+			@echo "   $(WHITE)|\\(                        .'  Y '>,"
+			@echo "    $(WHITE)\\ \\                      / $(RED)_   _$(RESET)   \\"
+			@echo "     $(WHITE)\\ \\                     )$(RED)(_) (_)$(RESET)(|}"
+			@echo "      $(WHITE)\\ \\                   {  4A   } /"
+			@echo "       $(WHITE)\\ \\                   \\uLuJJ/\\l"
+			@echo "        $(WHITE)\\ \\                  |3    p)/"
+			@echo "         $(WHITE)\\ \\ __________$(RESET)      /nnm_n//"
+			@echo "         $(WHITE)c7___-__,__-)\\,__)(\".$(RESET)  \\_>-<_/D"
+			@echo "                   $(WHITE)//V $(RESET)\\_\"-._.__G G_c__.-__<\"/ ( \\"
 			@echo "                          <\"-._>__-,G_.___)\\   \\7\\"
 			@echo "                         (\"-.__.|\"<.__.-\" )    \\ \\"
 			@echo "                         |\"-.__\"\\  |\"-.__.-\".\\  \\ \\"

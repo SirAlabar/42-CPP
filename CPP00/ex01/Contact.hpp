@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 19:46:08 by hluiz-ma          #+#    #+#             */
+/*   Updated: 2025/03/24 19:46:09 by hluiz-ma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
@@ -30,4 +42,6 @@ public:
     void setNickname(const std::string& nickname);
     void setPhoneNumber(const std::string& phoneNumber);
     void setDarkestSecret(const std::string& darkestSecret);    
-}
+};
+
+#endif
