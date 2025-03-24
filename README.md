@@ -1,8 +1,8 @@
-# 🏫 C++ Modules Project README
+# 🏫 C++ Modules Project
 
 ## Overview 🌟
 
-This repository contains my implementations of the C++ modules from the curriculum. These modules are designed to introduce Object-Oriented Programming concepts using C++ as the language of choice.
+This repository contains my implementations of the C++ modules from the 42 curriculum. These modules are designed to introduce Object-Oriented Programming concepts using C++ as the language of choice.
 
 ## Project Structure 📂
 
