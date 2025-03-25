@@ -26,6 +26,11 @@ PhoneBook::~PhoneBook()
    
 }
 
+int PhoneBook::getCount() const
+{
+    return this->count;
+}
+
 std::string formatString(const std::string& str)
 {
     std::string result;
@@ -69,7 +74,7 @@ void PhoneBook::displayAllContacts() const
 
     for (int i = 0; i < this->count; i++)
     {
-        std::cout << "|" << std::setw(10) << i << "|";
+        std::cout << "|" << std::setw(10) << (i + 1) << "|";
         std::cout << formatString(this->contacts[i].getFirstName()) << "|";
         std::cout << formatString(this->contacts[i].getLastName()) << "|";
         std::cout << formatString(this->contacts[i].getNickname()) << "|" << std::endl;

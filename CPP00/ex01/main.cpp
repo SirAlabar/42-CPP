@@ -65,7 +65,7 @@ int main()
         {
             phoneBook.displayAllContacts();
 
-            if (phoneBook.count == 0)
+            if (phoneBook.getCount() == 0)
                 continue;
 
             std::string indexStr;

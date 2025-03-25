@@ -28,13 +28,15 @@ class PhoneBook
 private:
     Contact contacts[8];
     int oldestIndex;
+    int count;    
 
 public:
-    int count;
 
     PhoneBook();
     ~PhoneBook();
 
+    int getCount() const;
+    
     void addContact(const Contact& contact);
     void displayAllContacts() const;
     void displayContact(int index) const;
