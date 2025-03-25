@@ -16,11 +16,11 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= phonebook
+NAME		= Account
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= main.cpp Contact.cpp PhoneBook.cpp
+SRCS		= tests.cpp Account.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 #==============================================================================#
