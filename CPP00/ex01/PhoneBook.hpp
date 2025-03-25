@@ -27,10 +27,11 @@ class PhoneBook
 {
 private:
     Contact contacts[8];
-    int count;
     int oldestIndex;
 
 public:
+    int count;
+
     PhoneBook();
     ~PhoneBook();
 

@@ -51,15 +51,60 @@ int main()
         
         if (command == "ADD")
         {
+            Contact newContact;
+            
+            newContact.setFirstName(getInput("Enter first name: "));
+            newContact.setLastName(getInput("Enter last name: "));
+            newContact.setNickname(getInput("Enter nickname: "));
+            newContact.setPhoneNumber(getInput("Enter phone number: "));
+            newContact.setDarkestSecret(getInput("Enter darkest secret: "));
 
+            phoneBook.addContact(newContact);
         }
         else if (command == "SEARCH")
         {
+            phoneBook.displayAllContacts();
+
+            if (phoneBook.count == 0)
+                continue;
+
+            std::string indexStr;
+            std::cout << "Search [1 .. 8]: ";
+            std::getline(std::cin, indexStr);
             
+            if (std::cin.eof())
+                break;
+
+            bool validNumber = true;
+            for (size_t i = 0; i < indexStr.length(); i++)
+            {
+                if (!isdigit(indexStr[i]))
+                {
+                    validNumber = false;
+                    break;
+                }
+            }
+            
+            if (!validNumber || indexStr.empty())
+            {
+                std::cout << RED << "Invalid index, choose between 1 and 8" << RESET << std::endl;
+                continue;
+            }
+            
+            int index = std::atoi(indexStr.c_str());
+            
+            if (index < 1 || index > 8)
+            {
+                std::cout << RED << "Invalid index, choose between 1 and 8" << RESET << std::endl;
+                continue;
+            }
+            int arrayIndex = index - 1;
+            std::cout << "Searching..." << std::endl;
+            phoneBook.displayContact(arrayIndex);
         }
         else if (command != "EXIT")
         {
-            std::cout << RED << "Invalid command. Please try again."
+            std::cout << RED << "Invalid command. Please try again." << RESET << std::endl;
         }
     } while (command != "EXIT");
 

@@ -21,18 +21,41 @@ PhoneBook::PhoneBook()
     this->oldestIndex = 0;
 }
 
-void addContact(const Contact& contact)
+PhoneBook::~PhoneBook()
 {
-    this->contact[this->oldestIndex] = contact;
+   
+}
+
+std::string formatString(const std::string& str)
+{
+    std::string result;
+
+    if(str.length() > 10)
+        result = str.substr(0, 9) + ".";
+    else
+    {
+        result = std::string(10, ' ');
+
+        int startPos = 10 - str.length();
+        for (size_t i = 0; i < str.length(); i++)
+            result[startPos + i] = str[i];
+    }
+    return result;
+}
+
+void PhoneBook::addContact(const Contact& contact)
+{
+    this->contacts[this->oldestIndex] = contact;
     
     if(this->count < 8)
         this->count++;
 
     this->oldestIndex = (this->oldestIndex + 1) % 8;
 
-    std::cout << GREEN << "Contact added successguflly!" << RESET << std::endl;  
+    std::cout << GREEN << "Contact added successfully!" << RESET << std::endl;  
 }
-void displayAllContacts() const
+
+void PhoneBook::displayAllContacts() const
 {
     if (this->count == 0)
     {
@@ -49,12 +72,12 @@ void displayAllContacts() const
         std::cout << "|" << std::setw(10) << i << "|";
         std::cout << formatString(this->contacts[i].getFirstName()) << "|";
         std::cout << formatString(this->contacts[i].getLastName()) << "|";
-        std::cout << formatString(this->contacts[i].getNickname()) << "|" << stdendl;
+        std::cout << formatString(this->contacts[i].getNickname()) << "|" << std::endl;
     }
     std::cout << "|___________________________________________|" << std::endl;
 }
 
-void displayContact(int index) const
+void PhoneBook::displayContact(int index) const
 {
     if (index < 0 || index >= this->count)
     {
@@ -72,21 +95,4 @@ void displayContact(int index) const
     std::cout << "| Phone Number:   " << this->contacts[index].getPhoneNumber() << std::endl;
     std::cout << "| Darkest Secret: " << this->contacts[index].getDarkestSecret() << std::endl;
     std::cout << "|___________________________________________|" << std::endl;
-}
-
-std::string formatString(const std::string& str)
-{
-    std::string result;
-
-    if(str.length() > 10)
-        result = str.substr(0, 9) + ".";
-    else
-    {
-        result = std::string(10, ' ');
-
-        int startPos = 10 - str.length();
-        for (int i = 0; i < str.length(); i++)
-            result[startPos + i] = str[i];
-    }
-    return result;
 }

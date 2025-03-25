@@ -12,6 +12,16 @@
 
 #include "Contact.hpp"
 
+Contact::Contact()
+{
+
+}
+
+Contact::~Contact()
+{
+
+}
+
 std::string Contact::getFirstName() const
 {
     return (this->_firstName);
