@@ -1,16 +1,20 @@
 
 #include "Account.hpp"
 
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 Account::Account( int initial_deposit );
 Account::~Account( void );
 
 
-static int	Account::getNbAccounts( void );
-static int	Account::getTotalAmount( void );
-static int	Account::getNbDeposits( void );
-static int	Account::getNbWithdrawals( void );
-static void	Account::displayAccountsInfos( void );
+int	Account::getNbAccounts( void );
+int	Account::getTotalAmount( void );
+int	Account::getNbDeposits( void );
+int	Account::getNbWithdrawals( void );
+void	Account::displayAccountsInfos( void );
 
 
 void	Account::makeDeposit( int deposit );
