@@ -16,11 +16,11 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= harlFilter
+NAME		= Fixed
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= main.cpp Harl.cpp
+SRCS		= main.cpp Fixed.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 #==============================================================================#
