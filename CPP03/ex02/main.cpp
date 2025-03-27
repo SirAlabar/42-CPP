@@ -1,9 +1,10 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-    std::cout << "\n===== CLAPTRAP & SCAVTRAP BATTLE SIMULATION INITIATED =====\n" << std::endl;
+    std::cout << "\n===== CLAPTRAP, SCAVTRAP & FRAGTRAP BATTLE SIMULATION INITIATED =====\n" << std::endl;
 
     std::cout << ">> Deploying ClapTrap unit CT-1 to the battlefield..." << std::endl;
     ClapTrap clap1("CT-1");
@@ -22,23 +23,33 @@ int main()
     scav1.beRepaired(15);
     scav1.guardGate();
     
-    std::cout << "\n>> Deploying clone of ScavTrap ST-1..." << std::endl;
-    ScavTrap scav2(scav1);
-    scav2.attack("Badass Nomad");
+    std::cout << "\n>> Deploying FragTrap unit FT-1 for heavy combat..." << std::endl;
+    FragTrap frag1("FT-1");
+    
+    std::cout << "\n>> FragTrap engaging enemies:" << std::endl;
+    frag1.attack("Boss Enemy");
+    frag1.takeDamage(50);
+    frag1.beRepaired(25);
+    frag1.highFivesGuys();
     
     std::cout << "\n>> Testing proper constructor/destructor chain:" << std::endl;
     {
-        std::cout << ">> Creating a temporary ScavTrap..." << std::endl;
-        ScavTrap tempScav("TEMP-ST");
-        std::cout << ">> Temporary ScavTrap will be destroyed upon exiting this scope..." << std::endl;
+        std::cout << ">> Creating a temporary FragTrap..." << std::endl;
+        FragTrap tempFrag("TEMP-FT");
+        std::cout << ">> Temporary FragTrap will be destroyed upon exiting this scope..." << std::endl;
     }
     
-    std::cout << "\n>> Original ScavTrap engaging in heavy combat:" << std::endl;
-    scav1.takeDamage(80);
-    scav1.attack("Boss Enemy");
-    scav1.beRepaired(50);
+    std::cout << "\n>> Testing copy constructor for FragTrap:" << std::endl;
+    FragTrap frag2(frag1);
+    frag2.attack("Mini Boss");
+    frag2.highFivesGuys();
+    
+    std::cout << "\n>> Testing assignment operator for FragTrap:" << std::endl;
+    FragTrap frag3;
+    frag3 = frag1;
+    frag3.attack("Elite Guard");
     
     std::cout << "\n===== SIMULATION COMPLETE =====\n" << std::endl;
     
-    return 0;
+    return (0);
 }
