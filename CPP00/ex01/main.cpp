@@ -6,7 +6,7 @@
 /*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 19:51:50 by hluiz-ma          #+#    #+#             */
-/*   Updated: 2025/03/24 20:44:06 by hluiz-ma         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:10:30 by hluiz-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,17 @@
 #include <string>
 #include <cstdlib>
 
-std::string getInput(const std::string& prompt)
+bool isValidPhoneNumber(const std::string& str)
+{
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (!isdigit(str[i]))
+            return false;
+    }
+    return !str.empty();
+}
+
+std::string getInput(const std::string& prompt, bool isPhone = false)
 {
     std::string input;
     
@@ -24,12 +34,23 @@ std::string getInput(const std::string& prompt)
     {
         std::cout << prompt;
         std::getline(std::cin, input);
+        
         if(std::cin.eof())
             exit(0);
-        if(!input.empty())
-            return input;
         
-        std::cout << RED << "Field cannot be empty. Please try again." << RESET << std::endl;
+        if(input.empty())
+        {
+            std::cout << RED << "Field cannot be empty. Please try again." << RESET << std::endl;
+            continue;
+        }
+        
+        if (isPhone && !isValidPhoneNumber(input))
+        {
+            std::cout << RED << "Phone number must contain only digits. Please try again." << RESET << std::endl;
+            continue;
+        }
+        
+        return input;
     }
 }
 
@@ -56,7 +77,7 @@ int main()
             newContact.setFirstName(getInput("Enter first name: "));
             newContact.setLastName(getInput("Enter last name: "));
             newContact.setNickname(getInput("Enter nickname: "));
-            newContact.setPhoneNumber(getInput("Enter phone number: "));
+            newContact.setPhoneNumber(getInput("Enter phone number: ", true));
             newContact.setDarkestSecret(getInput("Enter darkest secret: "));
 
             phoneBook.addContact(newContact);

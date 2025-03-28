@@ -6,7 +6,7 @@
 /*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 19:51:53 by hluiz-ma          #+#    #+#             */
-/*   Updated: 2025/03/24 20:57:01 by hluiz-ma         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:53:36 by hluiz-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-   
+
 }
 
 int PhoneBook::getCount() const
