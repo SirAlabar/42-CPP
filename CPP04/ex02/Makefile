@@ -16,11 +16,11 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= 
+NAME		= AAnimal
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= main.cpp 
+SRCS		= main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp 
 OBJS		= $(SRCS:.cpp=.o)
 
 #==============================================================================#
