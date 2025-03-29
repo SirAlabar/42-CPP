@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 18:23:12 by hluiz-ma          #+#    #+#             */
-/*   Updated: 2025/03/29 18:23:13 by hluiz-ma         ###   ########.fr       */
+/*   Created: 2025/03/29 19:54:18 by hluiz-ma          #+#    #+#             */
+/*   Updated: 2025/03/29 19:58:43 by hluiz-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
-
-#include <string>
+#include "Ice.hpp"
 #include <iostream>
 
-class Brain
+Ice::Ice() : AMateria("ice")
 {
-private:
-    std::string ideas[100];
+    
+}
 
-public:
-    Brain();
-    Brain(const Brain &src);
-    Brain &operator=(const Brain &src);
-    ~Brain();
+Ice::Ice(const Ice& src) : AMateria(src)
+{
+    
+}
 
-    std::string getIdea(int index) const;
-    void setIdea(int index, const std::string &idea);
-};
+Ice& Ice::operator=(const Ice& src)
+{
+    AMateria::operator=(src);
+    return (*this);
+}
 
-#endif
+Ice::Ice()
+{
+    
+}
+
+AMateria* Ice::clone() const
+{
+    return new Ice(*this);
+}
+
+void Ice::use(ICharacter& target)
+{
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/29 18:21:22 by hluiz-ma          #+#    #+#             */
+/*   Updated: 2025/03/29 18:21:23 by hluiz-ma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap(), _name("Default")
