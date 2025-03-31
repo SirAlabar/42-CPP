@@ -13,11 +13,12 @@
 #include "AMateria.hpp"
 #include <iostream>
 
-AMateria::AMateria(std::string const & type)
+AMateria::AMateria(std::string const & type) : type(type)
 {
     
 }
-AMateria::AMateria(const Amateria& src)
+
+AMateria::AMateria(const AMateria& src) : type(src.type)
 {
     
 }
@@ -31,7 +32,7 @@ AMateria& AMateria::operator=(const AMateria& src)
     return (*this);
 }
 
-AMateria::AMateria~AMateria()
+AMateria::~AMateria()
 {
     
 }

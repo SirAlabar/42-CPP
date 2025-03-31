@@ -29,7 +29,7 @@ Ice& Ice::operator=(const Ice& src)
     return (*this);
 }
 
-Ice::Ice()
+Ice::~Ice()
 {
     
 }
