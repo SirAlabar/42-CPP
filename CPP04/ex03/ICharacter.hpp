@@ -6,7 +6,7 @@
 /*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 19:54:43 by hluiz-ma          #+#    #+#             */
-/*   Updated: 2025/03/29 19:54:44 by hluiz-ma         ###   ########.fr       */
+/*   Updated: 2025/04/01 20:13:27 by hluiz-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define ICHARACTER_HPP
 
 #include <string>
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 
 class AMateria;
 
