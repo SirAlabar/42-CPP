@@ -1,88 +1,80 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int main() 
 {
-    std::cout << "----- Testing valid bureaucrat creation -----" << std::endl;
+    std::cout << "----- Testing Form Creation -----" << std::endl;
     try 
     {
-        Bureaucrat bob("Bob", 50);
-        std::cout << bob << std::endl;
+        Form defaultForm;
+        std::cout << defaultForm << std::endl;
         
-        Bureaucrat copiedBob(bob);
-        std::cout << "Copied Bob: " << copiedBob << std::endl;
+        Form taxForm("Tax Form", 50, 25);
+        std::cout << taxForm << std::endl;
         
-        Bureaucrat alice("Alice", 75);
-        std::cout << "Before assignment: " << alice << std::endl;
-        alice = bob;
-        std::cout << "After assignment: " << alice << std::endl;
+        Form copiedForm(taxForm);
+        std::cout << "Copied Form: " << copiedForm << std::endl;
+        
+        Form assignedForm;
+        assignedForm = taxForm;
+        std::cout << "Assigned Form: " << assignedForm << std::endl;
     }
     catch (std::exception &e) 
     {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
-    
-    std::cout << "\n----- Testing grade too high exception -----" << std::endl;
+
+    std::cout << "\n----- Testing Form Grade Exceptions -----" << std::endl;
     try 
     {
-        Bureaucrat john("John", 0);
-        std::cout << john << std::endl;
+        Form invalidForm("Invalid Form", 0, 25); 
+        std::cout << invalidForm << std::endl;
     } 
     catch (std::exception &e) 
     {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n----- Testing grade too low exception -----" << std::endl;
     try 
     {
-        Bureaucrat jane("Jane", 151);
-        std::cout << jane << std::endl;
+        Form invalidForm("Invalid Form", 50, 151);
+        std::cout << invalidForm << std::endl;
     }
     catch (std::exception &e) 
     {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n----- Testing increment and decrement -----" << std::endl;
+    std::cout << "\n----- Testing Bureaucrat Signing Forms -----" << std::endl;
     try 
     {
-        Bureaucrat jim("Jim", 5);
-        std::cout << "Initial: " << jim << std::endl;
+        Bureaucrat boss("Boss", 1);
+        Bureaucrat manager("Manager", 50);
+        Bureaucrat intern("Intern", 150);
         
-        jim.incrementGrade();
-        std::cout << "After increment: " << jim << std::endl;
+        Form topSecretForm("Top Secret", 5, 2);
+        Form standardForm("Standard", 50, 25);
+        Form basicForm("Basic", 100, 100);
         
-        jim.decrementGrade();
-        std::cout << "After decrement: " << jim << std::endl;
-    }
-    catch (std::exception &e) 
-    {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-    
-    std::cout << "\n----- Testing increment exception -----" << std::endl;
-    try 
-    {
-        Bureaucrat top("Top Bureaucrat", 1);
-        std::cout << "Initial: " << top << std::endl;
+        std::cout << "\nInitial form states:" << std::endl;
+        std::cout << topSecretForm << std::endl;
+        std::cout << standardForm << std::endl;
+        std::cout << basicForm << std::endl;
         
-        top.incrementGrade();
-        std::cout << "After increment: " << top << std::endl;
-    }
-    catch (std::exception &e) 
-    {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-    
-    std::cout << "\n----- Testing decrement exception -----" << std::endl;
-    try 
-    {
-        Bureaucrat bottom("Bottom Bureaucrat", 150);
-        std::cout << "Initial: " << bottom << std::endl;
+        std::cout << "\nTesting signing with different bureaucrat levels:" << std::endl;
+        boss.signForm(topSecretForm);
+        manager.signForm(standardForm);
+        intern.signForm(basicForm);
         
-        bottom.decrementGrade(); 
-        std::cout << "After decrement: " << bottom << std::endl;
+        std::cout << "\nAttempting to sign forms with insufficient grade:" << std::endl;
+        intern.signForm(topSecretForm);
+        intern.signForm(standardForm);
+        
+        std::cout << "\nFinal form states:" << std::endl;
+        std::cout << topSecretForm << std::endl;
+        std::cout << standardForm << std::endl;
+        std::cout << basicForm << std::endl;
     }
     catch (std::exception &e) 
     {
