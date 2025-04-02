@@ -10,65 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "AMateria.hpp"
-// #include "Ice.hpp"
-// #include "Cure.hpp"
-// #include "Character.hpp"
-// #include "MateriaSource.hpp"
-// #include <iostream>
-
-// int main() {
-//     IMateriaSource* src = new MateriaSource();
-//     src->learnMateria(new Ice());
-//     src->learnMateria(new Cure());
-    
-//     ICharacter* me = new Character("me");
-    
-//     AMateria* tmp;
-//     tmp = src->createMateria("ice");
-//     me->equip(tmp);
-//     tmp = src->createMateria("cure");
-//     me->equip(tmp);
-    
-//     ICharacter* bob = new Character("bob");
-    
-//     me->use(0, *bob);
-//     me->use(1, *bob);
-    
-//     std::cout << "\n--- Additional Tests ---\n" << std::endl;
-    
-//     tmp = src->createMateria("fire");
-//     if (!tmp)
-//         std::cout << "Could not create 'fire' materia (as expected)" << std::endl;
-    
-//     std::cout << "Unequipping materia at slot 0..." << std::endl;
-//     me->unequip(0);
-//     me->use(0, *bob);
-    
-//     std::cout << "Creating a copy of 'me' character..." << std::endl;
-//     Character* meClone = new Character(*(Character*)me);
-//     meClone->use(1, *bob);
-    
-//     delete bob;
-//     delete me;
-//     delete meClone;
-//     delete src;
-    
-//     return 0;
-// }
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hluiz-ma <hluiz-ma@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 19:54:48 by hluiz-ma          #+#    #+#             */
-/*   Updated: 2025/03/29 19:54:49 by hluiz-ma         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
