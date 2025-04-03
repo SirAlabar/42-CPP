@@ -16,11 +16,12 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= 
+NAME		= form_28b_not_28c
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= main.cpp  
+SRCS		= main.cpp  Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+			  ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 #==============================================================================#
