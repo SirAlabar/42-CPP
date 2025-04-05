@@ -16,7 +16,7 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= 
+NAME		= iter
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
