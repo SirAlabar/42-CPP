@@ -16,7 +16,7 @@ RESET		= \033[0m
 #                                   TARGETS                                      #
 #==============================================================================#
 
-NAME		= 
+NAME		= PmergeMe
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
