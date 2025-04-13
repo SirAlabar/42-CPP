@@ -1,4 +1,4 @@
-#pragam once
+#pragma once
 
 #include <vector>
 #include <deque>
