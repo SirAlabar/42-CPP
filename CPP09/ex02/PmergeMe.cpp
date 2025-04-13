@@ -214,10 +214,106 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& arr)
 //deque
 void PmergeMe::binaryInsertDeque(std::deque<int>& arr, int value, size_t start, size_t end)
 {
+    size_t left = start;
+    size_t right = end;
 
+    while (left < right)
+    {
+        size_t mid = left + (right - left) / 2;
+        if (arr[mid] <= value)
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid;
+        }
+    }
+    arr.insert(arr.begin() + left, value);
 }
 
-void PmergeMe::fordJohnsonSortDeque(std::deque<int>& arr);
+void PmergeMe::fordJohnsonSortDeque(std::deque<int>& arr)
+{
+    size_t size = arr.size();
+
+    if (size <= 1)
+    {
+        return ;
+    }
+    if (size == 2)
+    {
+        if (arr[0] > arr[1])
+        {
+            std::swap(arr[0], arr[1]);
+            return ;
+        }
+    }
+
+    //step 1
+    std::deque<std::pair<int , int> > pairs;
+    bool odd = (size % 2 != 0);
+    int straggler = 0;
+
+    for (size_t i = 0; i < size - (odd ? 1 : 0); i += 2)
+    {
+        if (arr[i] > arr[i + 1])
+        {
+            pairs.push_back(std::make_pair(arr[i+1], arr[i]));
+        }
+        else
+        {
+            pairs.push_back(std::make_pair(arr[i], arr[i+1]));
+        }
+    }
+    if (odd)
+    {
+        straggler = arr[size - 1];
+    }
+
+    //step 2 extract larger for each pair
+    std::deque<int> bigNums;
+    for (size_t i = 0; i < pairs.size(); i++)
+    {
+        bigNums.push_back(pairs[i].second);
+    }
+
+    //step 3 recursive sort big nums
+    fordJohnsonSortDeque(bigNums);
+
+    //step 4 create main vec with big num sorted
+    std::deque<int> mainChain;
+    mainChain.push_back(pairs[0].first);
+
+    for (size_t  = 0; i < bigNums.size(); i++)
+    {
+        mainChain.push_back(bigNums[i]);
+    }
+
+    //step 5 insert remain small num using binary insert and jacob sequence
+    std::deque<int> smallNums;
+    for (size_t i = 1; i < pairs.size(); i++)
+    {
+        smallNums.push_back(pairs[i].first);
+    }
+
+    std::vector<size_t> insertOrder = generateJacobsthalVector(smallNums.size());
+
+    for (size_t i = 0; i < insertOrder.size() && i < smallNums.size(); i++)
+    {
+        size_t index = insertOrder[i];
+        if (index < smallNums.size())
+        {
+            int num = smallNums[index];
+            binaryInsertDeque(mainChain, num, 0, mainChan.size());
+        }
+    }
+    if (odd)
+    {
+        binaryInsertDeque(mainChain, straggler, 0, mainChain.size());
+    }
+
+    arr = mainChain;
+}
 
 
 void PmergeMe::sortWithVector()
