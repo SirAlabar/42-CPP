@@ -9,6 +9,10 @@
 int main() 
 {
     std::cout << "----- Testing Concrete Forms -----" << std::endl;
+    AForm* rrf = NULL;
+    AForm* scf = NULL;
+    AForm* ppf = NULL;
+    
     try 
     {
         Bureaucrat boss("Boss", 1);
@@ -39,33 +43,41 @@ int main()
         std::cout << "\n----- Testing Intern Class -----" << std::endl;
         Intern someRandomIntern;
         
-        AForm* rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
         std::cout << *rrf << std::endl;
         boss.signForm(*rrf);
         boss.executeForm(*rrf);
         
-        AForm* scf = someRandomIntern.makeForm("shrubbery creation", "home");
+        scf = someRandomIntern.makeForm("shrubbery creation", "home");
         std::cout << *scf << std::endl;
         boss.signForm(*scf);
         boss.executeForm(*scf);
         
-        AForm* ppf = someRandomIntern.makeForm("presidential pardon", "Douglas Adams");
+        ppf = someRandomIntern.makeForm("presidential pardon", "Douglas Adams");
         std::cout << *ppf << std::endl;
         boss.signForm(*ppf);
         boss.executeForm(*ppf);
         
         std::cout << "\n----- Testing Invalid Form -----" << std::endl;
-        AForm* invalidForm = someRandomIntern.makeForm("time travel request", "Einstein");
-        std::cout << *invalidForm << std::endl;
-        
-        delete rrf;
-        delete scf;
-        delete ppf;
+        try 
+        {
+            AForm* invalidForm = someRandomIntern.makeForm("time travel request", "Einstein");
+            std::cout << *invalidForm << std::endl;
+            delete invalidForm;
+        } 
+        catch (std::exception &e) 
+        {
+            std::cerr << "Expected error: " << e.what() << std::endl;
+        }
     }
     catch (std::exception &e) 
     {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
     
-    return 0;
+    if (rrf) delete rrf;
+    if (scf) delete scf;
+    if (ppf) delete ppf;
+    
+    return (0);
 }
