@@ -28,6 +28,7 @@ private:
 
     std::string formatTime(double time) const;
     bool isValidPositiveInt(const std::string& str) const;
+    size_t jacobIndexes(size_t n);
 
 public:
 
@@ -39,8 +40,8 @@ public:
     void processArgs(int argc, char** argv);
 
     void sortWithVector();
-    void sorteWithDeque();
-
+    void sortWithDeque();
+    void validateSorting() const;
     void displayBefore() const;
     void displayAfter() const;
     void displayTimes() const;

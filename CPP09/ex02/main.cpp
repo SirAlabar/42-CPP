@@ -20,8 +20,8 @@ int main(int argc, char** argv)
         sorter.displayBefore();
 
         sorter.sortWithVector();
- //       sorter.sortWithDeque();
-
+        sorter.sortWithDeque();
+        sorter.validateSorting();
         sorter.displayAfter();
 
         sorter.displayTimes();
