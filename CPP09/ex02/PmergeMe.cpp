@@ -106,55 +106,36 @@ std::vector<size_t> PmergeMe::generateJacobsthalVector(size_t n)
 {
     std::vector<size_t> result;
     
-    if (n <= 0)
+    if (n <= 1)
     {
-        return result;
-    }
-        
-
-    if (n == 1) 
-    {
-        result.push_back(0);
+        if (n == 1)
+            result.push_back(0);
         return result;
     }
     
-    std::vector<size_t> jacobNums;
-    jacobNums.push_back(0);
-    jacobNums.push_back(1);
+    result.push_back(0);
     
-    size_t i = 2;
-    while (jacobNums.back() < n) 
+    size_t jacobIndex = 3;
+    while (jacobIndexes(jacobIndex) < n)
     {
-        jacobNums.push_back(jacobNums[i-1] + 2 * jacobNums[i-2]);
-        i++;
+        result.push_back(jacobIndexes(jacobIndex) - 1);
+        jacobIndex++;
     }
     
-    std::vector<size_t> insertIndices;
-
-    if (1 < n) insertIndices.push_back(1);
-    
-
-    for (size_t j = 3; j < jacobNums.size() && jacobNums[j-1] <= n; j++) 
+    std::vector<bool> used(n, false);
+    for (size_t i = 0; i < result.size(); i++)
     {
-        for (size_t k = jacobNums[j-1]; k > jacobNums[j-2]; k--) 
-        {
-            if (k < n) insertIndices.push_back(k);
-        }
+        if (result[i] < n)
+            used[result[i]] = true;
     }
     
-    size_t lastJ = 0;
-    for (size_t j = 0; j < jacobNums.size(); j++) 
+    for (size_t i = 0; i < n; i++)
     {
-        if (jacobNums[j] < n) lastJ = jacobNums[j];
-        else break;
+        if (!used[i])
+            result.push_back(i);
     }
     
-    for (size_t i = lastJ + 1; i < n; i++) 
-    {
-        insertIndices.push_back(i);
-    }
-    
-    return insertIndices;
+    return result;
 }
 
 //vector
