@@ -77,45 +77,84 @@ void PmergeMe::processArgs(int argc, char** argv)
     }
 }
 
-size_t PmergeMe::jacobIndexes(size_t n)
+size_t PmergeMe::jacobIndexes(size_t n) 
 {
-    return round((pow(2, n + 1) - pow(-1, n)) / 3);
+    if (n == 0) 
+    {
+        return 0;
+    }
+    if (n == 1) 
+    {
+        return 1;
+    }
+    
+    size_t prev1 = 1;
+    size_t prev2 = 0;
+    size_t result = 0;
+    
+    for (size_t i = 2; i <= n; ++i) 
+    {
+        result = prev1 + 2 * prev2;
+        prev2 = prev1;
+        prev1 = result;
+    }
+    
+    return result;
 }
 
 std::vector<size_t> PmergeMe::generateJacobsthalVector(size_t n)
 {
     std::vector<size_t> result;
     
-    if (n <= 1)
+    if (n <= 0)
     {
-        if (n == 1)
-            result.push_back(0);
+        return result;
+    }
+        
+
+    if (n == 1) 
+    {
+        result.push_back(0);
         return result;
     }
     
-    result.push_back(0);
+    std::vector<size_t> jacobNums;
+    jacobNums.push_back(0);
+    jacobNums.push_back(1);
     
-    size_t jacobIndex = 3;
-    while (jacobIndexes(jacobIndex) < n)
+    size_t i = 2;
+    while (jacobNums.back() < n) 
     {
-        result.push_back(jacobIndexes(jacobIndex) - 1);
-        jacobIndex++;
+        jacobNums.push_back(jacobNums[i-1] + 2 * jacobNums[i-2]);
+        i++;
     }
     
-    std::vector<bool> used(n, false);
-    for (size_t i = 0; i < result.size(); i++)
+    std::vector<size_t> insertIndices;
+
+    if (1 < n) insertIndices.push_back(1);
+    
+
+    for (size_t j = 3; j < jacobNums.size() && jacobNums[j-1] <= n; j++) 
     {
-        if (result[i] < n)
-            used[result[i]] = true;
+        for (size_t k = jacobNums[j-1]; k > jacobNums[j-2]; k--) 
+        {
+            if (k < n) insertIndices.push_back(k);
+        }
     }
     
-    for (size_t i = 0; i < n; i++)
+    size_t lastJ = 0;
+    for (size_t j = 0; j < jacobNums.size(); j++) 
     {
-        if (!used[i])
-            result.push_back(i);
+        if (jacobNums[j] < n) lastJ = jacobNums[j];
+        else break;
     }
     
-    return result;
+    for (size_t i = lastJ + 1; i < n; i++) 
+    {
+        insertIndices.push_back(i);
+    }
+    
+    return insertIndices;
 }
 
 //vector
@@ -215,7 +254,13 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& arr)
     }
 
     std::vector<size_t> insertOrder = generateJacobsthalVector(smallNums.size());
-
+    std::cout << "Vetor de Jacobsthal para = " << std::endl;
+    for (std::vector<size_t>::const_iterator it = insertOrder.begin();
+    it != insertOrder.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
     for (size_t i = 0; i < insertOrder.size(); i++)
     {
         size_t index = insertOrder[i];
@@ -426,7 +471,6 @@ void PmergeMe::validateSorting() const
     for (size_t i = 1; i < _vector.size(); i++) {
         if (_vector[i-1] > _vector[i]) {
             std::cerr << "ERROR: Vector not properly sorted at position " << i << std::endl;
-            break;
         }
     }
     
@@ -434,7 +478,6 @@ void PmergeMe::validateSorting() const
     for (size_t i = 1; i < _deque.size(); i++) {
         if (_deque[i-1] > _deque[i]) {
             std::cerr << "ERROR: Deque not properly sorted at position " << i << std::endl;
-            break;
         }
     }
 }
