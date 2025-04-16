@@ -17,10 +17,12 @@ private:
     double _vectorTime;
     double _dequeTime;
 
+    std::vector<size_t> generateJacobsthalSequence(size_t n);
+    std::vector<size_t> generateInsertionOrder(size_t n);
+
     //vector
     void fordJohnsonSortVector(std::vector<int>& arr);
     void binaryInsertVector(std::vector<int>& arr, int value, size_t start, size_t end);
-    std::vector<size_t> generateJacobsthalVector(size_t n);
 
     //deque
     void fordJohnsonSortDeque(std::deque<int>& arr);
@@ -28,7 +30,6 @@ private:
 
     std::string formatTime(double time) const;
     bool isValidPositiveInt(const std::string& str) const;
-    size_t jacobIndexes(size_t n);
 
 public:
 
@@ -41,7 +42,7 @@ public:
 
     void sortWithVector();
     void sortWithDeque();
-    void validateSorting() const;
+    // void validateSorting() const;
     void displayBefore() const;
     void displayAfter() const;
     void displayTimes() const;

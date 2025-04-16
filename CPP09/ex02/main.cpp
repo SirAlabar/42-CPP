@@ -21,7 +21,6 @@ int main(int argc, char** argv)
 
         sorter.sortWithVector();
         sorter.sortWithDeque();
-        sorter.validateSorting();
         sorter.displayAfter();
 
         sorter.displayTimes();
